@@ -35,8 +35,8 @@ func TestAuthenticateUser(t *testing.T) {
 		password string
 		result   entities.User
 	}{
-		{"test.valid@gmail.com", "testpassword123", entities.User{ID: 1, Email: "test.valid@gmail.com", Password: ""}},
-		{"test.invalid@gmail.com", "testpassword123", entities.User{ID: 0, Email: "test.invalid@gmail.com", Password: ""}},
+		{"test.valid@gmail.com", "testpassword", entities.User{ID: 1, Email: "test.valid@gmail.com", Password: ""}},
+		{"test.invalid@gmail.com", "testpassword", entities.User{ID: 0, Email: "test.invalid@gmail.com", Password: ""}},
 	}
 
 	for _, tc := range cases {
