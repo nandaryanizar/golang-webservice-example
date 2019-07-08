@@ -1,0 +1,31 @@
+version: '3'
+
+networks:
+  host:
+
+services:
+  webservice:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    depends_on:
+      - postgres_db
+    volumes:
+      - $PWD:/go/src/github.com/nandaryanizar/golang-webservice-example
+    networks:
+      - host
+    ports:
+      - "8080:8080"
+  postgres_db:
+    image: postgres:9.5
+    ports:
+      - "5432:5432"
+    expose:
+      - "5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pgadmin123
+      POSTGRES_DB: testdb
+    restart: on-failure
+    networks:
+      - host
